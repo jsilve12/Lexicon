@@ -48,6 +48,7 @@ class tournament:
     def round(self, team1, team2, res, round):
         #Initializes the match
         self.rounds.append((team1, team2, res, round))
+
 class season:
     teams = dict()
     tournaments = dict()
@@ -56,11 +57,35 @@ class season:
         #Import from the sqlite db
         conn = sqlite3.connect('seasondb.sqlite')
         cur = conn.cursor()
+        conn1 = sqlite3.connect('seasondb.sqlite')
+        cur1 = conn1.cursor()
+        conn2 = sqlite3.connect('seasondb.sqlite')
+        cur2 = conn2.cursor()
 
-        cur.execute('SELECT * FROM Teams IF EXISTS')
+        #Imports Teams
+        try:
+            cur.execute('SELECT * FROM Teams')
+        except:
+            return
         for team in cur.fetchone():
-            self.teams[team['name']] = team()
-            self.teams[team['name']] = team['elo']
+            self.teams[team[1]] = team(team[2], team[3], team[4])
+
+        #Imports Tournaments
+        cur.execute('SELECT * FROM Tournaments')
+        for tournament in cur.fetchone():
+            self.tournaments[tournament[1]] = tournament()
+
+            #Imports Rounds
+            cur1.execute('SELECT * FROM Rounds WHERE tourney_id = ' + tournament[0])
+            for round in cur1.fetchone():
+
+                #Get the teams
+                cur2.execute('SELECT name FROM Teams WHERE id = ?', (round[0]))
+                team_1 = cur2.fetchone()[1]
+                cur2.execute('SELECT name FROM Teams WHERE id = ?', (round[1]))
+                team_2 = cur2.fetchone()[1]
+
+                self.round(team_1, team_2, round[3], round[4] ,tournament[0])
 
     def elo(self, tournamen):
         for rund in self.tournaments[tournamen].rounds:
