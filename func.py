@@ -1,8 +1,11 @@
 import sqlite3, math
 class team:
+    #Purpose of glick_round - To ensure rounds in the same tournament don't effect glicko
+    #Purpose of glick_time - If you go multiple weeks without competing
     elo = 1500
     glicko = 350
     glick_time = 0
+    glick_round = 350
     history = dict()
 
     def __init__(self):
@@ -13,6 +16,7 @@ class team:
         self.glicko = glick
         self.glick_time = glick_t
 
+
     # def round(self, opponent, res, rounds):
     #     #Updates the objects self-history
     #     try:
@@ -20,27 +24,37 @@ class team:
     #     except:
     #         self.history[opponent] = (res,rounds)
 
-    def round(self, oppelo):
+    def round(self, res, rounds, oppelo):
         #Updates the objects self-history
         #self.round(opponent, res, rounds)
 
         #Updates the glicko based off of how long the team has been inactive
         if self.glick_time != 0:
-            self.glicko = min(sqrt(self.glicko*self.glicko + 34.6*34.6*self.glick_time), 350)
+            self.glicko = min(math.sqrt(self.glicko*self.glicko + 34.6*34.6*self.glick_time), 350)
             self.glick_time = 0
 
         #Updates the elo
         q = math.log1p(10)/400
         g = 1/math.sqrt(1+(3*q*q*self.glicko*self.glicko)/(3.1415*3.1415))
-        e = 1/(1+10^(g*(self.elo-oppelo)/(-400)))
-        d2 = 1/(q*q*g*g*E*(1-E))
-        self.elo = self.elo + (q/(1/(glicko*glicko)+1/(d2)))*g*(res-e)
+
+        e = 1+math.pow(10, g*(self.elo-oppelo)/(-400))
+        e = 1/(e)
+
+        d2 = 1/(q*q*g*g*e*(1-e))
+        a = (q/(1/(self.glicko*self.glicko)+1/(d2)))
+        b = g*(res-rounds*e)
+        val = a*b
+        self.elo = self.elo + val
 
         #Updates the glicko based on the round
-        self.glicko = sqrt(1/(1/(self.glicko*self.glicko)+1/d))
+        self.glick_round = math.sqrt(1/(1/(self.glick_round*self.glick_round)+1/d2))
+        print(self.elo, self.glicko, self.glick_round)
 
     def glicko(self):
         self.glick_time += 1
+
+    def gr(self):
+        self.glicko = self.glick_round
 
 class tournament:
     rounds = list()
@@ -91,13 +105,13 @@ class season:
                 #Get the teams
                 cur2.execute('SELECT name FROM Team WHERE id = ?', (round[0],))
                 try:
-                    team_1 = cur2.fetchone()[1]
+                    team_1 = cur2.fetchone()[0]
                 except:
                     team_1 = 100000
 
                 cur2.execute('SELECT name FROM Team WHERE id = ?', (round[1],))
                 try:
-                    team_2 = cur2.fetchone()[1]
+                    team_2 = cur2.fetchone()[0]
                 except:
                     team_2 = 100000
 
@@ -111,12 +125,17 @@ class season:
                 self.teams[rund[1]] = team()
 
             temp_el = self.teams[rund[0]].elo
-            self.teams[rund[0]].round(self.teams[rund[1]].elo)
-            self.teams[rund[1]].round(temp_el)
+            print(rund[0])
+            self.teams[rund[0]].round(rund[2], rund[3], self.teams[rund[1]].elo)
+            print(rund[1])
+            self.teams[rund[1]].round(math.fabs(rund[3] - rund[2]), rund[3], temp_el)
+
+        for tea in self.teams.values():
+            tea.gr()
 
     def glicko(self):
-        for team in self.teams:
-            team.glicko()
+        for tea in self.teams.values():
+            tea.glicko()
 
     def newTourney(self, tournamen):
         self.tournaments[tournamen] = tournament()
