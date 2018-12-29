@@ -42,15 +42,17 @@ while True :
         teams = teams('tr')
 
         #Goes through each team
-        for team in teams:
+        for tea in teams:
             try:
-                url1 = "https://www.tabroom.com"+team.a.get('href')
+                url1 = "https://www.tabroom.com"+tea.a.get('href')
             except:
                 continue
 
             #Gets 'this' team
             team1 = teamName(url1)
             print('\n', team1, '\n')
+            if team1 not in sea.teams:
+                sea.teams[team1] = team()
 
             #Gets each opponents team
             url1 = urllib.request.urlopen(url1, context=ctx)
@@ -77,17 +79,19 @@ while True :
                             sea.round(team1, team2, wins, num, numTourney)
                         except Exception:
                             traceback.print_exc()
-
                     #The next iteration of the loop
                     url2 = url2.next_sibling.next_sibling
                 except:
                     break
 
         sea.elo(numTourney)
+    elif op == "Elo Tournament":
+        tourn = input("Which Tournament: ")
+        sea.elo(tourn)
 
     elif op == "Print Results":
         fh = open("Results", w)
-        for key, value in sea.teams.item():
+        for key, value in sea.teams.items():
             fh.write(key, value.elo)
         #Do other fancy things with results?
     elif op == "Glicko":
