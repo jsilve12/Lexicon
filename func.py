@@ -87,6 +87,9 @@ class team:
 class tournament:
     rounds = list()
 
+    def __init__(self):
+        self.rounds = list()
+
     def round(self, team1, team2, res, round):
         #Initializes the match
         self.rounds.append((team1, team2, res, round))
@@ -127,7 +130,7 @@ class season:
             cur1.execute('SELECT * FROM Round WHERE Tournament_id = ' + str(tournamen[0]))
             rounds = cur1.fetchall()
             if len(rounds) == 0:
-                return
+                continue
             for round in rounds:
 
                 #Get the teams
@@ -144,6 +147,7 @@ class season:
                     team_2 = 100000
 
                 self.round(team_1, team_2, round[3], round[4] ,tournamen[1])
+
 
     def elo(self, tournamen):
         for rund in self.tournaments[tournamen].rounds:
@@ -235,7 +239,11 @@ class season:
                     #The next iteration of the loop
                     url2 = url2.next_sibling.next_sibling
                 except:
-                    break
+                    #Try again, incase you hit a bye
+                    try:
+                        url2 = url2.next_sibling.next_sibling
+                    except:
+                        break
 
         self.elo(numTourney)
 
