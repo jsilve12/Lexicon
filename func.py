@@ -179,7 +179,15 @@ class season:
         #Gets through each team
         teams = BeautifulSoup(url, 'html.parser')
         numTourney = self.newTourney(Tournam3nt)
-        teams = teams('tr')
+        teamst = teams('tr')
+        teams = list()
+        for tea in teamst:
+            try:
+                teams.append(tea.find_all('td')[0])
+                teams.append(tea.find_all('td')[1])
+            except:
+                print("Passed")
+                continue
 
         #Goes through each team
         for tea in teams:

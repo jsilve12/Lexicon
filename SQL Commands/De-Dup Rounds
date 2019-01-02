@@ -1,0 +1,1 @@
+Delete from Round Where rowid Not in (Select min(rowid) From Round Group By Team1_id, Team2_id, Tournament_id, Rounds)
