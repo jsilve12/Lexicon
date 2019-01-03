@@ -6,9 +6,15 @@ ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
-def teamName(url1):
-    url1 = urllib.request.urlopen(url1, context=ctx)
-    team = BeautifulSoup(url1, 'html.parser')
+def teamName(url1, cache):
+    try:
+        team = cache[url1]
+        print("hit")
+    except:
+        u = url1
+        url2 = urllib.request.urlopen(url1, context=ctx)
+        team = BeautifulSoup(url2, 'html.parser')
+        cache[url1] = team
 
     #Fetches all the Teams
     name = team('h4')
@@ -179,6 +185,7 @@ class season:
     def insertTournament(self, url, Tournam3nt):
         url = urllib.request.urlopen(url, context=ctx)
         url = url.read()
+        cache = dict()
 
         #Gets through each team
         teams = BeautifulSoup(url, 'html.parser')
@@ -201,7 +208,7 @@ class season:
                 continue
 
             #Gets 'this' team
-            team1 = teamName(url1)
+            team1 = teamName(url1, cache)
             print('\n', team1, '\n')
             if team1 not in self.teams:
                 self.teams[team1] = team()
@@ -226,7 +233,7 @@ class season:
                         num += 1
                         if v.string.strip() == "W":
                             wins += 1
-                    team2 = teamName("https://tabroom.com/index/tourn/postings/"+url2.a.get('href'))
+                    team2 = teamName("https://tabroom.com/index/tourn/postings/"+url2.a.get('href'), cache)
                     print(team2)
 
                     #Picks one team, and uses that as the model
