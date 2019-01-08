@@ -1,4 +1,4 @@
-import urllib.request, urllib.parse, urllib.error, ssl, traceback, logging
+import urllib.request, urllib.parse, urllib.error, ssl, traceback, logging,time
 from func import team, tournament, season
 from bs4 import BeautifulSoup
 
@@ -20,13 +20,21 @@ while True :
         sea.insertTournament(url, Tournam3nt)
 
     elif op == "Insert Season":
+        for tea in sea.teams.values():
+            tea.elo = 1500
+            tea.glicko = 350
+            tea.glick_time = 0
         Tourn = open("tournaments.txt", 'r')
         for lines in Tourn:
-            if(lines == "Break"):
+            if(lines.strip() == "Break"):
                 sea.glicko()
             else:
                 lines = lines.split()
-                sea.insertTournament(lines[0], lines[1])
+                if lines[1] not in sea.tournaments:
+                    sea.insertTournament(lines[0], lines[1])
+                    time.sleep(60)
+                else:
+                    sea.elo(lines[1])
 
     elif op == "Elo Tournament":
         tourn = input("Which Tournament: ")

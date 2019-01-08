@@ -19,7 +19,7 @@ def teamName(url1, cache):
     #Fetches all the Teams
     name = team('h4')
     name = name[3].string.split()
-    school = team('h2')
+    school = team('h6')
     school = school[0].string.strip()
 
     #Naming convention (School name, first name alphabetically, second name alphabetically)
@@ -27,7 +27,7 @@ def teamName(url1, cache):
     n2 = name[3] + " " + name[4]
     if n1 > n2:
         n1,n2 = n2,n1
-    return school[:(len(school)-3)] + " " + name[0] + " " + name[1] + " " + name[3] + " " + name[4]
+    return school + " " + name[0] + " " + name[1] + " " + name[3] + " " + name[4]
 
 class team:
     #Purpose of glick_round - To ensure rounds in the same tournament don't effect glicko
@@ -83,7 +83,7 @@ class team:
         self.glick_round = math.sqrt(1/(1/(self.glick_round*self.glick_round)+1/d2))
         print(self.elo_round, self.glick_round)
 
-    def glicko(self):
+    def glickoats(self):
         self.glick_time += 1
 
     def gr(self):
@@ -172,8 +172,8 @@ class season:
             tea.gr()
 
     def glicko(self):
-        for tea in self.teams.values():
-            tea.glicko()
+        for tea in self.teams.items():
+            tea[1].glickoats()
 
     def newTourney(self, tournamen):
         self.tournaments[tournamen] = tournament()
@@ -208,14 +208,13 @@ class season:
                 continue
 
             #Gets 'this' team
-            team1 = teamName(url1, cache)
+            team1 = teamName(url1.strip(), cache)
             print('\n', team1, '\n')
             if team1 not in self.teams:
                 self.teams[team1] = team()
 
             #Gets each opponents team
-            url1 = urllib.request.urlopen(url1, context=ctx)
-            url2 = BeautifulSoup(url1, 'html.parser')
+            url2 = cache[url1]
 
             #Gets results
             num = len(url2.findAll('h5'))
@@ -233,7 +232,7 @@ class season:
                         num += 1
                         if v.string.strip() == "W":
                             wins += 1
-                    team2 = teamName("https://tabroom.com/index/tourn/postings/"+url2.a.get('href'), cache)
+                    team2 = teamName("https://www.tabroom.com/index/tourn/postings/"+url2.a.get('href').strip(), cache)
                     print(team2)
 
                     #Picks one team, and uses that as the model
