@@ -22,12 +22,17 @@ def teamName(url1, cache):
     school = team('h6')
     school = school[0].string.strip()
 
+    #If it's a mav
+    if len(name) < 3:
+        return school + " " + name[0] + name[1]
+
     #Naming convention (School name, first name alphabetically, second name alphabetically)
     n1 = name[0] + " " + name[1]
     n2 = name[3] + " " + name[4]
+
     if n1 > n2:
         n1,n2 = n2,n1
-    return school + " " + name[0] + " " + name[1] + " " + name[3] + " " + name[4]
+    return school + " " + n1 + " " + n2
 
 class team:
     #Purpose of glick_round - To ensure rounds in the same tournament don't effect glicko
