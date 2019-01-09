@@ -217,6 +217,7 @@ class season:
         for tea in teamst:
             try:
                 for t in tea.select('td > a'):
+                    print(t.get('href'))
                     if "/index/tourn/postings/entry_record.mhtml" in t.get('href'):
                         teams.append(t.get('href'))
                         print(t.get('href'))

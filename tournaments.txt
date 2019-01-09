@@ -1,11 +1,11 @@
-https://www.tabroom.com/index/tourn/results/round_results.mhtml?tourn_id=10038&round_id=325880 Kentucky
-https://www.tabroom.com/index/tourn/results/round_results.mhtml?tourn_id=10079&round_id=347787 Bryam
-https://www.tabroom.com/index/tourn/results/round_results.mhtml?tourn_id=10510&round_id=337850 Niles
-https://www.tabroom.com/index/tourn/results/round_results.mhtml?tourn_id=10621&round_id=347725 GrapeVine
+https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10038&round_id=325880 Kentucky
+https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10079&round_id=347787 Bryam
+https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10510&round_id=337850 Niles
+https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10621&round_id=347725 GrapeVine
 Break
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10561&round_id=338908 Greenhill
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10561&round_id=349367 GreenhillRR
-https://www.tabroom.com/index/tourn/fields.mhtml?tourn_id=10180&event_id=87132 Yale
+https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10180&round_id=351466 Yale
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10238&round_id=333133 Garcia
 Break
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10610&round_id=340222 Mid-America
@@ -19,7 +19,7 @@ https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10552&round_id
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=11088&round_id=356792 WestLakeChaparral
 Break
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10385&round_id=340189 AndoverCentral
-https://www.tabroom.com/index/tourn/postings/entry_record.mhtml?tourn_id=10125&entry_id=1922319 Bentonville
+https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10125&round_id=344179 Bentonville
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10885&round_id=348960 Beehive
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10233&round_id=333039 New Trier
 Break
@@ -37,13 +37,12 @@ https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10207&round_id
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10099&round_id=329391 JWPatterson
 Break
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10692&round_id=342909 Michigan
-https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10692&round_id=342874 Michigan JRR
-https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10692&round_id=368211 Michigan SRR
+https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10692&round_id=342874 MichiganJRR
+https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10692&round_id=368211 MichiganSRR
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10101&round_id=329481 Meadows
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=11411&round_id=367912 UNT
 Break
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10100&round_id=329454 Damus
-https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10679&round_id=345475 Southside
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=11511&round_id=371949 Hebron
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=11203&round_id=360248 KCKCC
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=11099&round_id=357235 Groves-Falcon
@@ -59,7 +58,6 @@ https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=11050&round_id
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10721&round_id=344147 Mount_Carmel
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=11236&round_id=361105 Jungle
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=11128&round_id=358498 RCC
-https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10163&round_id=362650 Panther_Invite
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10196&round_id=376401 Cypress_Bay
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=9432&round_id=298493 Roosevelt_Sweepstakes
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10573&round_id=339219 Chuck_Ballinggall
@@ -71,9 +69,7 @@ https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10982&round_id
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10768&round_id=345639 Villiger
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=9270&round_id=290547 Glenbrooks
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=11580&round_id=380642 Elkhorn
-https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=11568&round_id=374354 TCFL
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10664&round_id=357489 Oak_Hill
-https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=9271&round_id=290586 GlenbrooksRR
 Break
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10197&round_id=332455 Alta
 https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=10839&round_id=347571 MSU
