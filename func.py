@@ -24,7 +24,7 @@ def teamName(url1, cache):
 
     #If it's a mav
     if len(name) < 3:
-        return school + " " + name[0] + name[1]
+        return school + " " + name[0] + " " + name[1]
 
     #Naming convention (School name, first name alphabetically, second name alphabetically)
     n1 = name[0] + " " + name[1]
@@ -89,7 +89,7 @@ class team:
         print(self.elo_round, self.glick_round)
 
     def glickoats(self):
-        self.glick_time += 1
+        self.glick_time += 0.5
 
     def gr(self):
         self.glicko = self.glick_round
@@ -120,7 +120,7 @@ class season:
 
         #Imports Teams
         try:
-            cur.execute('SELECT * FROM Team')
+            cur.execute('SELECT *,_rowid_ FROM Team')
         except:
             return
         teams = cur.fetchall()
@@ -158,6 +158,23 @@ class season:
                     team_2 = 100000
 
                 self.round(team_1, team_2, round[3], round[4] ,tournamen[1])
+
+        for tea in self.teams.keys():
+            for t in self.teams.keys():
+                se = tea.split()
+                s = t.split()
+                try:
+                    if (s[-1] == se[-3]) & (se[-1] == s[-3]) & (s[-2] == se[-4]) & (se[-2] == s[-4]):
+                        print("OOP")
+                        if(se[-4] > se[-2]):
+                            print(t)
+                            print(tea)
+                        else:
+                            print(tea)
+                            print(t)
+                except:
+                    pass
+                    #print(s)
 
 
     def elo(self, tournamen):
