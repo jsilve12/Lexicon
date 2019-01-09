@@ -30,7 +30,7 @@ while True :
                 lines = lines.split()
                 if lines[1] not in sea.tournaments:
                     sea.insertTournament(lines[0], lines[1])
-                    time.sleep(10)
+                    time.sleep(50)
                 else:
                     sea.elo(lines[1])
 

@@ -216,16 +216,19 @@ class season:
         teams = list()
         for tea in teamst:
             try:
-                teams.append(tea.find_all('td')[0])
-                teams.append(tea.find_all('td')[1])
+                for t in tea.select('td > a'):
+                    if "/index/tourn/postings/entry_record.mhtml" in t.get('href'):
+                        teams.append(t.get('href'))
+                        print(t.get('href'))
             except:
                 print("Passed")
                 continue
 
         #Goes through each team
+        print(len(teams))
         for tea in teams:
             try:
-                url1 = "https://www.tabroom.com"+tea.a.get('href')
+                url1 = "https://www.tabroom.com"+tea
             except:
                 continue
 
@@ -245,8 +248,9 @@ class season:
                     url2 = url2.findAll('h5')[ta].next_sibling.next_sibling
             #print(teamName("https://tabroom.com/index/tourn/postings/"+url2.a.get('href')))
             while True:
-                try:
-                    #Gets the results of the round, and the Opponent Team
+                #Gets the results of the round, and the Opponent Team
+                if (url2 is not None) and (url2.select('span')[1].string.strip() != "Bye"):
+                    print(url2.select('span')[1].string.strip())
                     wins = 0
                     num = 0
                     val = url2.findAll(class_=("tenth centeralign semibold"))
@@ -264,6 +268,7 @@ class season:
                             self.round(team1, team2, wins, num, numTourney)
                         except Exception:
                             traceback.print_exc()
+                try:
                     #The next iteration of the loop
                     url2 = url2.next_sibling.next_sibling
                 except:
