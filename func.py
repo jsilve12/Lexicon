@@ -89,7 +89,7 @@ class team:
         print(self.elo_round, self.glick_round)
 
     def glickoats(self):
-        self.glick_time += 0.5
+        self.glick_time += 1
 
     def gr(self):
         self.glicko = self.glick_round

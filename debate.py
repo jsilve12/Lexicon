@@ -20,10 +20,8 @@ while True :
         sea.insertTournament(url, Tournam3nt)
 
     elif op == "Insert Season":
-        for tea in sea.teams.values():
-            tea.elo = 1500
-            tea.glicko = 350
-            tea.glick_time = 0
+        for tea in sea.teams.keys():
+            sea.teams[tea] = team()
         Tourn = open("tournaments.txt", 'r')
         for lines in Tourn:
             if(lines.strip() == "Break"):
