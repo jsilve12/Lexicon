@@ -273,7 +273,7 @@ class season:
                     #The next iteration of the loop
                     url2 = url2.next_sibling.next_sibling
                 except:
-                    #Try again, incase you hit a bye
+                    #Try again, in case you hit a bye
                     try:
                         url2 = url2.next_sibling.next_sibling
                     except:

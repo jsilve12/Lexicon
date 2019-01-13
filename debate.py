@@ -39,9 +39,13 @@ while True :
         sea.elo(tourn)
 
     elif op == "Print Results":
-        fh = open("Results", w)
+        sea.teams.elo.sort()
+        fh = open("Results.html", "w")
+        fh.write("<table><tr><th>Team</th><th>Elo</th><th>Ratings Distributions</th></tr>")
         for key, value in sea.teams.items():
-            fh.write(key, value.elo)
+            if value.glicko < 120 and value.glick_time < 10:
+                fh.write("<tr><td>" + key + "</td><td>" + str(value.elo)[:7] + "</td><td>" + str(value.glicko)[:5] + "</td></tr>\n")
+        fh.write("</table>")
         #Do other fancy things with results?
     elif op == "Glicko":
         sea.glicko()
